@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchQuotes } from "../store/quotesSlice";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
   const quotes = useSelector((state) => state.quotes);
-  console.log("quotes", quotes);
-  //generate random index from 1-10 to fetch the quote
 
   const [category, setCategory] = useState("");
 
-  ///SET CATEGORY STATE => THEN PASS IN TO USEEFFECT
-
-  // useEffect(() => {
-  //     dispatch(fetchQuotes(category));
-  // }, [dispatch]);
-
   const handleSubmit = async (evt) => {
-    console.log(category, "cat");
     evt.preventDefault();
     await dispatch(fetchQuotes(category));
-    console.log(quotes);
   };
 
   return (
@@ -34,6 +25,7 @@ const Home = () => {
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             >
+                <option value=''>---Choose a category---</option>
               <option value="age">Age</option>
               <option value="amazing">Amazing</option>
               <option value="art">Art</option>
@@ -77,15 +69,19 @@ const Home = () => {
             <button type="submit">Pick me UP!</button>
           </form>
         </div>
-        <div>
+        <div id='quotebox'>
           {quotes
             ? quotes.map((quote) => {
                 return (
-                  <div>
-                    <h1>{quote.quote}</h1>
+                  <div key={quote.id}>
+                    <h1>"{quote.quote}"</h1>
                     <h3>by: {quote.author}</h3>
+                    <Link>Add to My Quotes</Link>
+            <Link>Share</Link>
+            {/** https://www.npmjs.com/package/react-share  */}
                   </div>
-                );
+                )
+                
               })
             : null}
         </div>
