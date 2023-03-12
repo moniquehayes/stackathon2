@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchQuotes, addToMyQuotes } from "../store/quotesSlice";
-import { Link } from "react-router-dom";
+import Share from "./Share";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,8 +22,6 @@ const Home = () => {
     const idx = Math.floor(Math.random()*34);
     const selectedCategory = topicsArray[idx];
     await dispatch(fetchQuotes(selectedCategory));
-    //pick random category from array; 
-    //dispatch thunk using that category.
   }
 
   return (
@@ -55,7 +53,10 @@ const Home = () => {
                     <h1>"{quote.quote}"</h1>
                     <h3>by: {quote.author}</h3>
                     {/* <Link>Add to My Quotes</Link> */}
-            <Link>Share</Link>
+                    <div id='sharing'>
+                        <h5>Share</h5>
+                        <Share/>
+                </div>
             {/** https://www.npmjs.com/package/react-share  */}
                   </div>
                 ) 
