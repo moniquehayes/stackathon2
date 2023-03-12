@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <h1>pick me up</h1>
+        {/* <h1>pick me up</h1> */}
         <div id="cat-input">
           <h3>Category: </h3>
           <form onSubmit={handleSubmit}>
@@ -42,7 +42,7 @@ const Home = () => {
                     )
                 })}
             </select>
-            <button type="submit">Pick me UP!</button>
+            <button type="submit">Pick me up!</button>
           </form>
         </div>
         <div id='quotebox'>
@@ -65,7 +65,7 @@ const Home = () => {
         </div>
         <div>
             {myPickedQuote.length === 0 ? 
-            <button onClick={pickForMe}>Pick for me!</button>
+            <button onClick={pickForMe}>Pick for me</button>
             : null}
         </div>
       </div>
