@@ -14,15 +14,23 @@ export const fetchQuotes = createAsyncThunk("quotes", async (category) => {
   }
 });
 
-const initialState = {
-    pickedQuote: [],
-    myQuotes: []
-}
+// const initialState = {
+//     pickedQuote: [],
+//     myQuotes: []
+// }
 
 export const quotesSlice = createSlice({
     name: "quotes",
-    initialState,
-    reducers: {}, 
+    initialState: {
+        pickedQuote: [],
+        myQuotes: []
+    },
+    reducers: {
+        addToQuotes: (state, action) => {
+            console.log(action);
+            state.myQuotes.push(action.payload);
+        }
+    }, 
     extraReducers: (builder) => {
         builder.addCase(fetchQuotes.fulfilled, (state, action) => {
             state.pickedQuote = action.payload;
@@ -31,5 +39,7 @@ export const quotesSlice = createSlice({
 });
 
 export const selectQuotes = (state) => state.quotes;
+
+export const {addToQuotes} = quotesSlice.actions;
 
 export default quotesSlice.reducer;

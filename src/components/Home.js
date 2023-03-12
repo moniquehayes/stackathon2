@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchQuotes, addToMyQuotes } from "../store/quotesSlice";
+import { fetchQuotes, addToQuotes} from "../store/quotesSlice";
 import Share from "./Share";
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
     const selectedCategory = topicsArray[idx];
     await dispatch(fetchQuotes(selectedCategory));
   }
+
 
   return (
     <>
@@ -57,6 +58,9 @@ const Home = () => {
                     <div id='sharing'>
                         <Share/>
                 </div>
+                <div>
+                    <button onClick={async () => await dispatch(addToQuotes(quote))}>Add to My Quotes</button>
+                    </div>
             {/** https://www.npmjs.com/package/react-share  */}
                   </div>
                 ) 
@@ -74,3 +78,6 @@ const Home = () => {
 };
 
 export default Home;
+
+
+// if you want to favorite it, could add a 'favorite: yes' key:value to the item in state?
