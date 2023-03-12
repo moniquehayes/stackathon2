@@ -34,6 +34,7 @@ const Home = () => {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              id='form'
             >
                 <option value=''>---Choose a category---</option>
                 {topicsArray.map((topic) =>  {
@@ -42,19 +43,18 @@ const Home = () => {
                     )
                 })}
             </select>
-            <button type="submit">Pick me up!</button>
+            <button type="submit" id='submit'>Pick me up!</button>
           </form>
         </div>
-        <div id='quotebox'>
+        <div>
           {myPickedQuote
             ? myPickedQuote.map((quote) => {
                 return (
-                  <div key={quote.id}>
+                  <div key={quote.id} id='quotebox'>
                     <h1>"{quote.quote}"</h1>
                     <h3>by: {quote.author}</h3>
                     {/* <Link>Add to My Quotes</Link> */}
                     <div id='sharing'>
-                        <h5>Share</h5>
                         <Share/>
                 </div>
             {/** https://www.npmjs.com/package/react-share  */}
@@ -65,7 +65,7 @@ const Home = () => {
         </div>
         <div>
             {myPickedQuote.length === 0 ? 
-            <button onClick={pickForMe}>Pick for me</button>
+            <button onClick={pickForMe} id='random-pick'>Pick for me</button>
             : null}
         </div>
       </div>

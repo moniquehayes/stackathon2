@@ -2,11 +2,10 @@
     - when link is clicked, add the quote to it
     ****IF TIME - added work at bottom of this doc
 
-3. figure out sharing functionality
 
-4. logo
 
-5. styling
+
+
 
 6. edit readme
 
