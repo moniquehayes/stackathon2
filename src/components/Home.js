@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchQuotes } from "../store/quotesSlice";
+import { fetchQuotes, addToMyQuotes } from "../store/quotesSlice";
 import { Link } from "react-router-dom";
 
 const Home = () => {
   const dispatch = useDispatch();
   const quotes = useSelector((state) => state.quotes);
+  const myPickedQuote = quotes.pickedQuote;
+
+  //prettier-ignore
+  const topicsArray = ['Age', 'Amazing', 'Art', 'Attitude', 'Beauty', 'Best', 'Business', 'Change', 'Cool', 'Courage', 'Dating', 'Dreams', 'Education', 'Equality', 'Experience', 'Failure', 'Faith', 'Family', 'Fear', 'Forgiveness', 'Freedom', 'Friendship', 'Funny', 'Happiness', 'Hope', 'Humor', 'Inspirational', 'Knowledge', 'Leadership', 'Learning', 'Life', 'Love', 'Money', 'Success'];
 
   const [category, setCategory] = useState("");
 
@@ -13,6 +17,14 @@ const Home = () => {
     evt.preventDefault();
     await dispatch(fetchQuotes(category));
   };
+
+  const pickForMe = async () => {
+    const idx = Math.floor(Math.random()*34);
+    const selectedCategory = topicsArray[idx];
+    await dispatch(fetchQuotes(selectedCategory));
+    //pick random category from array; 
+    //dispatch thunk using that category.
+  }
 
   return (
     <>
@@ -26,63 +38,33 @@ const Home = () => {
               onChange={(e) => setCategory(e.target.value)}
             >
                 <option value=''>---Choose a category---</option>
-              <option value="age">Age</option>
-              <option value="amazing">Amazing</option>
-              <option value="art">Art</option>
-              <option value="attitude">Attitude</option>
-              <option value="beauty">Beauty</option>
-              <option value="best">Best</option>
-              <option value="business">Business</option>
-              <option value="change">Change</option>
-              <option value="cool">Cool</option>
-              <option value="courage">Courage</option>
-              <option value="dating">Dating</option>
-              <option value="dreams">Dreams</option>
-              <option value="education">Education</option>
-              <option value="equality">Equality</option>
-              <option value="experience">Experience</option>
-              <option value="failure">Failure</option>
-              <option value="faith">Faith</option>
-              <option value="family">Family</option>
-              <option value="fear">Fear</option>
-              <option value="forgiveness">Forgiveness</option>
-              <option value="freedom">Freedom</option>
-              <option value="friendship">Friendship</option>
-              <option value="funny">Funny</option>
-              <option value="happiness">Happiness</option>
-              <option value="hope">Hope</option>
-              <option value="humor">Humor</option>
-              <option value="inspirational">Inspirational</option>
-              <option value="knowledge">Knowledge</option>
-              <option value="leadership">Leadership</option>
-              <option value="learning">Learning</option>
-              <option value="life">Life</option>
-              <option value="love">Love</option>
-              <option value="money">Money</option>
-              <option value="success">Success</option>
+                {topicsArray.map((topic) =>  {
+                    return (
+                        <option value={topic}>{topic}</option>
+                    )
+                })}
             </select>
-            {/* <input 
-                        name='category'
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    ></input> */}
             <button type="submit">Pick me UP!</button>
           </form>
         </div>
         <div id='quotebox'>
-          {quotes
-            ? quotes.map((quote) => {
+          {myPickedQuote
+            ? myPickedQuote.map((quote) => {
                 return (
                   <div key={quote.id}>
                     <h1>"{quote.quote}"</h1>
                     <h3>by: {quote.author}</h3>
-                    <Link>Add to My Quotes</Link>
+                    {/* <Link>Add to My Quotes</Link> */}
             <Link>Share</Link>
             {/** https://www.npmjs.com/package/react-share  */}
                   </div>
-                )
-                
+                ) 
               })
+            : null}
+        </div>
+        <div>
+            {myPickedQuote.length === 0 ? 
+            <button onClick={pickForMe}>Pick for me!</button>
             : null}
         </div>
       </div>
