@@ -14,11 +14,6 @@ export const fetchQuotes = createAsyncThunk("quotes", async (category) => {
   }
 });
 
-// const initialState = {
-//     pickedQuote: [],
-//     myQuotes: []
-// }
-
 export const quotesSlice = createSlice({
     name: "quotes",
     initialState: {
@@ -27,7 +22,6 @@ export const quotesSlice = createSlice({
     },
     reducers: {
         addToQuotes: (state, action) => {
-            console.log(action);
             state.myQuotes.push(action.payload);
         }
     }, 

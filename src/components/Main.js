@@ -8,8 +8,10 @@ const Main = () => {
         <div>
             <nav>
                 <img src='logo.png'/>
-                {/* <Link to='/'>Home</Link>
-                <Link to='/myquotes'>My Quotes</Link> */}
+                <div id='links'>
+                <Link id='home' to='/'>Home</Link>
+                <Link id='myquotes' to='/myquotes'>My Quotes</Link>
+                </div>
             </nav>
             <main>
                 <Routes>
