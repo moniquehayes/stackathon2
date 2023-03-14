@@ -4,16 +4,16 @@ import { FacebookShareButton, FacebookIcon, TwitterShareButton, TwitterIcon, Ema
 const Share = () => {
     return (
         <div>
-            <FacebookShareButton url={"https://api-ninjas.com/api/quotes"}>
+            <FacebookShareButton url={"https://github.com/moniquehayes/stackathon2"}>
                 <FacebookIcon size={32} round/>
             </FacebookShareButton>
-            <TwitterShareButton url={"https://api-ninjas.com/api/quotes"}>
+            <TwitterShareButton url={"https://github.com/moniquehayes/stackathon2"}>
                 <TwitterIcon size={32} round/>
             </TwitterShareButton>
-            <PinterestShareButton url={"https://api-ninjas.com/api/quotes"}>
+            <PinterestShareButton url={"https://github.com/moniquehayes/stackathon2"}>
                 <PinterestIcon size={32} round/>
             </PinterestShareButton>
-            <EmailShareButton url={"https://api-ninjas.com/api/quotes"}>
+            <EmailShareButton url={"https://github.com/moniquehayes/stackathon2"}>
                 <EmailIcon size={32} round/>
             </EmailShareButton>
         </div>
