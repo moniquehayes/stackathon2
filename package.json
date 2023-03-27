@@ -1,7 +1,7 @@
 {
   "name": "pick-me-up",
   "version": "0.1.0",
-  "homepage" : "https://moniquehayes.github.io/stackathon2",
+  "homepage": "https://moniquehayes.github.io/stackathon2",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
