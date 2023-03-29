@@ -1,10 +1,14 @@
 {
   "files": {
-    "main.js": "/stackathon2/static/js/main.c30fbfc0.js",
+    "main.css": "/stackathon2/static/css/main.2ea5048a.css",
+    "main.js": "/stackathon2/static/js/main.dfc0e56e.js",
+    "static/media/logo.png": "/stackathon2/static/media/logo.ae8c9b4e474e9a69632f.png",
     "index.html": "/stackathon2/index.html",
-    "main.c30fbfc0.js.map": "/stackathon2/static/js/main.c30fbfc0.js.map"
+    "main.2ea5048a.css.map": "/stackathon2/static/css/main.2ea5048a.css.map",
+    "main.dfc0e56e.js.map": "/stackathon2/static/js/main.dfc0e56e.js.map"
   },
   "entrypoints": [
-    "static/js/main.c30fbfc0.js"
+    "static/css/main.2ea5048a.css",
+    "static/js/main.dfc0e56e.js"
   ]
 }
