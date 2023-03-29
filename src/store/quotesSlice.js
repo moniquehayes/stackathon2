@@ -6,7 +6,8 @@ export const fetchQuotes = createAsyncThunk("quotes", async (category) => {
     const {data} = await axios({
         method: 'get',
         url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
-        headers: { 'X-Api-Key': 'zWBTjkyjS3P8g5OsjEqRuQ==wmpxhTk54lXRLDvp'},
+        headers: { 'X-Api-Key': '7SGMSaVGEBdXc1AqaqoOhvWe6qVyZUsZy5WSy4yz'},
+        contentType: 'application/json'
     });
     return data;
   } catch (err) {

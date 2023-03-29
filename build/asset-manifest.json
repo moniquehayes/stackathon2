@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/stackathon2/static/js/main.c30fbfc0.js",
+    "index.html": "/stackathon2/index.html",
+    "main.c30fbfc0.js.map": "/stackathon2/static/js/main.c30fbfc0.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c30fbfc0.js"
+  ]
+}

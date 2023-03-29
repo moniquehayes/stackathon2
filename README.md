@@ -17,4 +17,11 @@ If a user likes a quote they're given, they can click the 'Add to My Quotes' but
 
 ## Sharing
 
-When a quote is generated, users have the ability to share it with their loved ones via facebook, twitter, pinterest or email. 
+When a quote is generated, users have the ability to share it with their loved ones via facebook, twitter, pinterest or email.
+
+
+## Technology Stack
+
+
+## Developer
+Monique Hayes, https://www.linkedin.com/in/monique-hayes/ 

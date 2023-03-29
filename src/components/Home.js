@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchQuotes, addToQuotes } from "../store/quotesSlice";
 import Share from "./Share";
+import { Modal, Button } from "react-bootstrap";
 
 const Home = () => {
   const dispatch = useDispatch();
   const quotes = useSelector((state) => state.quotes);
   const myPickedQuote = quotes.pickedQuote;
-  const favQuotes = quotes.myQuotes;
 
   //prettier-ignore
   const topicsArray = ['Age', 'Amazing', 'Art', 'Attitude', 'Beauty', 'Best', 'Business', 'Change', 'Cool', 'Courage', 'Dating', 'Dreams', 'Education', 'Equality', 'Experience', 'Failure', 'Faith', 'Family', 'Fear', 'Forgiveness', 'Freedom', 'Friendship', 'Funny', 'Happiness', 'Hope', 'Humor', 'Inspirational', 'Knowledge', 'Leadership', 'Learning', 'Life', 'Love', 'Money', 'Success'];
 
   const [category, setCategory] = useState("");
-//   const [btnMessage, setBtnMessage] = useState('Add to My Quotes');
-
-//   if (favQuotes.includes(myPickedQuote)) {
-//     setBtnMessage('Added')
-//   };
+  const [btnMessage, setBtnMessage] = useState('Add to My Quotes');
+  const [show, setShow] = useState(false);
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
@@ -30,10 +27,11 @@ const Home = () => {
     await dispatch(fetchQuotes(selectedCategory));
   };
 
+  const handleClose = () => setShow(false);
+
   return (
     <>
       <div>
-        {/* <h1>pick me up</h1> */}
         <div id="cat-input">
           <h3>Category: </h3>
           <form onSubmit={handleSubmit}>
@@ -64,10 +62,25 @@ const Home = () => {
                     </div>
                     <div>
                       <button id='add-button'
-                        onClick={async () => await dispatch(addToQuotes(quote))}
+                        onClick={async () => {
+                          await dispatch(addToQuotes(quote));
+                          setShow(true);
+                        }}
                       >
-                        Add to My Quotes
+                        {btnMessage}
                       </button>
+                      <Modal
+                        show={show}
+                        onHide={handleClose}
+                        aria-labelledby="contained-modal-title-vcenter"
+                        centered
+                      >
+                        <Modal.Header closeButton></Modal.Header>
+                        <Modal.Body id="contained-modal-title-vcenter" style={{textAlign: 'center'}}>Added to My Quotes!</Modal.Body>
+                        <Modal.Footer>
+                          <Button id='modal-button' onClick={handleClose}>Close</Button>
+                        </Modal.Footer>
+                      </Modal>
                     </div>
                   </div>
                 );
@@ -87,5 +100,3 @@ const Home = () => {
 };
 
 export default Home;
-
-// if you want to favorite it, could add a 'favorite: yes' key:value to the item in state?

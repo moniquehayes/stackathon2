@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 const MyQuotes = () => {
     const quotes = useSelector((state => state.quotes));
     const myQuotes = quotes.myQuotes;
-    console.log(myQuotes);
 
     return (
         <>
@@ -26,8 +25,6 @@ const MyQuotes = () => {
         </div>
         </>
     )
-
-
 };
 
 export default MyQuotes;
